@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AC JS with HTML Learning</title>
+
+        <script>
+            //(b) giving id clearpH text
+            function textFunction() {
+            document.getElementById('clearpH').innerHTML="This text is from javascript in the head tag!"
+            }
+        </script>
+
+        <script src="htmlwithJs.js"></script>
+    </head>
+
+    <body>
+        <h2>What Can JavaScript Do?</h2>
+        <!--Javascript takes both single and double quotes-->
+        <p id="hello">JavaScript can change HTML content.</p>
+        
+        <!--Example with single quote-->
+        <button type="button" onclick='document.getElementById("hello").innerHTML = "Hello World!"'>Click Me!</button>
+        
+        <!--Example with single quote-->
+        <button type="button" onclick="document.getElementById('hello').innerHTML = 'Hello World Again!'">Click Me!</button>
+
+        <!--Change css style of html with Javascript-->
+        <button type="button" onclick="document.getElementById('hello').style.fontSize = '35px'">Click Me To Change Font!</button>
+
+        <!--Hide HTML element with javascript-->
+        <button type="button" onclick="document.getElementById('hello').style.display='none'">Click Me To Hide Text!</button>
+
+        <!--Reveal hidden HTML elements with javascript-->
+        <button type="button" onclick="document.getElementById('hello').style.display='block'">Click Me To Show Hidden Text!</button>
+
+        <!--Change background collor and text color with onclick-->
+        <button type="button" onclick="document.body.style.background='black',document.body.style.color='white'">Click to change color</button>
+
+        <!--(a)Write text with a script-->
+        <p id="clearP"></p>
+
+        <!--(b) Testing a giving text from a script in the <head> tag-->
+        <p id="clearpH" ></p>
+        <button type="button" onclick="textFunction()">Reveal Hidden text</button>
+
+        <!--(b) Testing a giving text from a script in the <head> tag-->
+        <p id="ExternText" ></p>
+        <button type="button" onclick="giveHtmlText()">Reveal Hidden text</button>
+
+        <script>
+            // (a) giving id clearP text
+            document.getElementById('clearP').innerHTML="This text is from javascript!"
+        </script>
+    </body>
+
+</html>
