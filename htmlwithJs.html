@@ -34,7 +34,7 @@
         <!--Reveal hidden HTML elements with javascript-->
         <button type="button" onclick="document.getElementById('hello').style.display='block'">Click Me To Show Hidden Text!</button>
 
-        <!--Change background collor and text color with onclick-->
+        <!--Change background color and text color with onclick-->
         <button type="button" onclick="document.body.style.background='black',document.body.style.color='white'">Click to change color</button>
 
         <!--(a)Write text with a script-->
@@ -47,10 +47,99 @@
         <!--(b) Testing a giving text from a script in the <head> tag-->
         <p id="ExternText" ></p>
         <button type="button" onclick="giveHtmlText()">Reveal Hidden text</button>
+        <br><br>
+
+        <p>Calculator</p>
+        <form target="_self" style="display: inline-flex;">
+            <input type="number" id="numOne" name="numOne">
+            <select id="calcType" name="calcType">
+                <option value="Add">+</option>
+                <option value="Subtract">-</option>
+                <option value="Multiply">*</option>
+                <option value="Divide">/</option>
+            </select>
+            <input type="number" id="numTwo" name="numTwo">
+            <p>=</p>
+            <br>
+            <input type="button" value="Calculate" onclick="calcNumbers()">
+        </form>
+
+        <p id="employeeList"></p>
+        <button type="button" onclick="document.getElementById('employeeList').innerHTML = obj.employees[0].firstName + ' ' + obj.employees[0].lastName;">Employee 1</button>
+        <button type="button" onclick="document.getElementById('employeeList').innerHTML = obj.employees[1].firstName + ' ' + obj.employees[1].lastName;">Employee 2</button>
+        <button type="button" onclick="document.getElementById('employeeList').innerHTML = obj.employees[2].firstName + ' ' + obj.employees[2].lastName;">Employee 3</button>
+
+        <p id="employeeListTwo"></p>
+        <button type="button" onclick="getEmployeeName(this)" id="employeeOne" value="employeeOne">Employee 1</button>
+        <button type="button" onclick="getEmployeeName(this)" id="employeeTwo" value="employeeTwo">Employee 2</button>
+        <button type="button" onclick="getEmployeeName(this)" id="employeeThree" value="employeeThree">Employee 3</button>
+
+
+        
 
         <script>
             // (a) giving id clearP text
             document.getElementById('clearP').innerHTML="This text is from javascript!"
+            
+            /*  function addNumbers() {
+                 let X = document.getElementById("numOne").valueAsNumber;
+                 let Y = document.getElementById("numTwo").valueAsNumber;
+                 let Z = X + Y;
+                 alert("your Answer is:" + Z);
+                }
+            */
+
+            function calcNumbers() {
+                let X = document.getElementById("numOne").valueAsNumber;
+                let Y = document.getElementById("numTwo").valueAsNumber;
+                getSelector = document.getElementById("calcType");
+
+                if (getSelector.value === "Add") {
+                    let Z = X + Y;
+                    alert("your Answer is: " + Z);
+                } else if (getSelector.value === "Subtract") {
+                    let Z = X - Y;
+                    alert("your Answer is: " + Z);
+                } else if (getSelector.value === "Multiply") {
+                    let Z = X * Y;
+                    alert("your Answer is: " + Z);
+                } else {
+                    let Z = X / Y;
+                    alert("your Answer is: " + Z);
+                } 
+            }
+
+            let list = '{ "employees" : [' +
+            '{ "firstName":"John" , "lastName":"Doe"},' +
+            '{ "firstName":"Pete" , "lastName":"The Cat"},' +
+            '{ "firstName":"Peter" , "lastName":"Quill"} ]}';
+
+            const obj = JSON.parse(list);
+
+            function getEmployeeName(button) {
+                buttonValue = button.value
+                // switch(buttonValue){
+                //     case 'employeeOne':
+                //     document.getElementById("employeeListTwo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].lastName;
+                //     break;
+                //     case 'employeeTwo' :
+                //     document.getElementById("employeeListTwo").innerHTML = obj.employees[1].firstName + " " + obj.employees[1].lastName;
+                //     break;
+                //     case 'employeeThree' :
+                //     document.getElementById("employeeListTwo").innerHTML = obj.employees[2].firstName + " " + obj.employees[2].lastName;
+                //     break;
+                // }
+
+                 if (buttonValue == "employeeOne") {
+                     document.getElementById("employeeListTwo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].lastName;
+                 } else if (buttonValue == "employeeTwo") {
+                     document.getElementById("employeeListTwo").innerHTML = obj.employees[1].firstName + " " + obj.employees[1].lastName;
+                 } else {
+                     document.getElementById("employeeListTwo").innerHTML = obj.employees[2].firstName + " " + obj.employees[2].lastName;
+                 }
+            
+            }
+            
         </script>
     </body>
 
